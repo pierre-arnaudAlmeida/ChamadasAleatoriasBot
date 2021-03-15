@@ -39,10 +39,10 @@ module.exports = class RemoveCall extends Command {
                             setTimeout(function() {
                             }, 1000);
                             var options = { method: 'POST',
-                            url: process.env.DB_URI_SAVE,
+                            url: process.env.DB_URI_2,
                             headers: {
                                 'cache-control': 'no-cache',
-                                'x-apikey': process.env.API_KEY_SAVE,
+                                'x-apikey': process.env.API_KEY,
                                 'content-type': 'application/json' },
                                 body: {
                                     ticket_number: result[i]['ticket_number'],
@@ -68,7 +68,7 @@ module.exports = class RemoveCall extends Command {
             
             setTimeout(function() {
             }, 1000);
-            
+
             var options = { method: 'DELETE',
                 url: process.env.DB_URI + '/' + args[0],
                 headers: {
