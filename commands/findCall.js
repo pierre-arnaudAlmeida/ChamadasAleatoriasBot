@@ -1,6 +1,5 @@
 const Command = require('./command')
 const { MessageEmbed } = require('discord.js')
-const config = require('../config.json')
 var request = require("request")
 
 module.exports = class FindCall extends Command {
