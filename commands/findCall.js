@@ -52,6 +52,11 @@ module.exports = class FindCall extends Command {
                     )
                 message.channel.send(embed)
             }
+
+            if (prank_call_list.length == 0) {
+                message.channel.send("Nao ha tickets com essas informaçoes")
+            }
+
         });
     }
 
