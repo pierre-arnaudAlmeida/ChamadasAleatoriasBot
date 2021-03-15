@@ -20,4 +20,5 @@ bot.on('message', (message) => {
     let commandUser = AddCall.parse(message) || RandomCall.parse(message) || RemoveCall.parse(message) || FindCall.parse(message) || ClearChannel.parse(message)
 })
 
-bot.login(config.token)
+//bot.login(config.token)
+bot.login(process.env.TOKEN)
