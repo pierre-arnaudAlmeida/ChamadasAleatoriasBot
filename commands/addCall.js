@@ -31,10 +31,10 @@ module.exports = class AddCall extends Command {
         }
         
         var options = { method: 'POST',
-            url: config.db_url,
+            url: process.env.DB_URI,
             headers: {
                 'cache-control': 'no-cache',
-                'x-apikey': config.api_key,
+                'x-apikey': process.env.API_KEY,
                 'content-type': 'application/json' },
                 body: {
                     ticket_number: ticket,

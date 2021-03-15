@@ -14,10 +14,10 @@ module.exports = class RandomCall extends Command {
         args.shift()
 
         var options = { method: 'GET',
-            url: config.db_url,
+            url: process.env.DB_URI,
             headers: {
                 'cache-control': 'no-cache',
-                'x-apikey': config.api_key
+                'x-apikey': process.env.API_KEY
             }
         };
 

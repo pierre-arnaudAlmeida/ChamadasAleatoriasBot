@@ -1,6 +1,5 @@
 const Command = require('./command')
 const { MessageEmbed } = require('discord.js')
-const config = require('../config.json')
 var request = require("request")
 
 module.exports = class RemoveCall extends Command {
@@ -14,10 +13,10 @@ module.exports = class RemoveCall extends Command {
         args.shift()
         
         var options = { method: 'DELETE',
-            url: config.db_url + '/' + args[0],
+            url: process.env.DB_URI + '/' + args[0],
             headers: {
                 'cache-control': 'no-cache',
-                'x-apikey': config.api_key,
+                'x-apikey': process.env.API_KEY,
                 'content-type': 'application/json'
             }
         };

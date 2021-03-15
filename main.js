@@ -1,5 +1,4 @@
 const { Client } = require('discord.js')
-const config = require('./config.json')
 const AddCall = require('./commands/addCall')
 const RandomCall = require('./commands/randomCall')
 const RemoveCall = require('./commands/removeCall')
@@ -20,5 +19,4 @@ bot.on('message', (message) => {
     let commandUser = AddCall.parse(message) || RandomCall.parse(message) || RemoveCall.parse(message) || FindCall.parse(message) || ClearChannel.parse(message)
 })
 
-//bot.login(config.token)
 bot.login(process.env.TOKEN)
