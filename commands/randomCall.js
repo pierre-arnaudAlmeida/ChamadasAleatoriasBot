@@ -37,7 +37,7 @@ module.exports = class RandomCall extends Command {
             var result = JSON.parse(body)
             var get_just_sub = true;
 
-            if (args[0] && args[0].toLowerCase() == "all") {
+            if (args[0] && args[0].toLowerCase() == "all_calls") {
                 get_just_sub = false;
                 args.shift()
             }
