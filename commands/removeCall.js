@@ -10,65 +10,10 @@ module.exports = class RemoveCall extends Command {
 
     static action (message) {
         let args = message.content.split(' ')
-        var save_call = false;
-        var call_to_save;
 
         args.shift()
-        
-        if (args[0] && args[0] == "-s") {
-            save_call = true;
-            args.shift()
-        }
 
         if (args[0]) {
-            if (save_call) {
-                var options = { method: 'GET',
-                    url: process.env.DB_URI,
-                    headers: {
-                        'cache-control': 'no-cache',
-                        'x-apikey': process.env.API_KEY
-                    }
-                };
-
-                request(options, function (error, response, body) {
-                    if (error) throw new Error(error)
-
-                    var result = JSON.parse(body)
-                    for (var i = 0; i < result.length; i++)
-                        if (result[i]['_id'] == args[0]) {
-                            setTimeout(function() {
-                            }, 1000);
-                            var options = { method: 'POST',
-                            url: process.env.DB_URI_2,
-                            headers: {
-                                'cache-control': 'no-cache',
-                                'x-apikey': process.env.API_KEY,
-                                'content-type': 'application/json' },
-                                body: {
-                                    ticket_number: result[i]['ticket_number'],
-                                    sender: result[i]['sender'],
-                                    phone_number: result[i]['phone_number'],
-                                    content: result[i]['content']
-                                },
-                                json: true
-                            };
-                
-                            request(options, function (error, response, body) {
-                                if (error) throw new Error(error);
-                
-                                const embed = new MessageEmbed()
-                                    .setTitle('Chamada feita Guardada')
-                                    .setColor(0x15c534)
-                                    .setDescription('A chamada feita foi corretamente guardada na base de dados');
-                                message.channel.send(embed);
-                            });
-                        }
-                });
-            }
-            
-            setTimeout(function() {
-            }, 1000);
-
             var options = { method: 'DELETE',
                 url: process.env.DB_URI + '/' + args[0],
                 headers: {
@@ -95,6 +40,8 @@ module.exports = class RemoveCall extends Command {
                     message.channel.send(embed);
                 }
             });
-        }
+        } else {
+			message.channel.send("Tens de por um id para salvar FILHO DA PUTA");
+		}
     }
 }
