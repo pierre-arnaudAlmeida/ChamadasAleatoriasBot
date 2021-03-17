@@ -31,8 +31,7 @@ module.exports = class ListCall extends Command {
                 return message.channel.send(embed);
             }
             
-            var prank_call_list = [];
-            var result = JSON.parse(body)
+            var prank_call_list = JSON.parse(body)
                     
             for (var i = 0; i < prank_call_list.length; i++) {
                 const embed = new MessageEmbed()
