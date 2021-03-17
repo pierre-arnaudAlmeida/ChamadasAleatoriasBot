@@ -33,7 +33,7 @@ module.exports = class SaveCall extends Command {
 				}
 			});
 				
-			console.log(call_to_save)
+			console.log(result)
 			let ticket_body = JSON.stringify({
 				ticket_number: call_to_save['ticket_number'],
 				sender: call_to_save['sender'],
