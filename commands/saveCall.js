@@ -10,9 +10,6 @@ module.exports = class SaveCall extends Command {
 
     static action (message) {
         let args = message.content.split(' ')
-        var call_to_save
-		var call_getted = true
-		
 		args.shift()
 		
         if (args[0]) {
@@ -27,45 +24,45 @@ module.exports = class SaveCall extends Command {
 			request(options, function (error, response, body) {
 				if (error) throw new Error(error)
 				var result = JSON.parse(body)
-				call_to_save = result
 				if (body.includes("error")) {
-					call_getted = false
+					const embed = new MessageEmbed()
+						.setTitle('Erro')
+						.setColor(0xff0000)
+						.setDescription('Um erro ocorreu na recuperaçao dos dados');
+					return message.channel.send(embed);
+				} else {
+					if (result.length != 0) {
+						setTimeout(function() {
+						}, 1000);
+							
+						var options = { method: 'POST',
+							url: process.env.DB_URI_2,
+							headers: {
+								'cache-control': 'no-cache',
+								'x-apikey': process.env.API_KEY,
+								'content-type': 'application/json' },
+							body: {
+								ticket_number: result['ticket_number'],
+								sender: result['sender'],
+								phone_number: result['phone_number'],
+								content: result['content']
+							},
+							json: true
+						};
+                
+						request(options, function (error, response, body) {
+							if (error) throw new Error(error);
+							const embed = new MessageEmbed()
+								.setTitle('Chamada feita Guardada')
+								.setColor(0x15c534)
+								.setDescription('A chamada feita foi corretamente guardada na base de dados');
+							message.channel.send(embed);
+						});
+					} else {
+						message.channel.send("Nao ha tickets com essas informaçoes")
+					}
 				}
 			});
-				
-			console.log(result)
-			let ticket_body = JSON.stringify({
-				ticket_number: call_to_save['ticket_number'],
-				sender: call_to_save['sender'],
-				phone_number: call_to_save['phone_number'],
-				content: call_to_save['content']
-			})
-			console.log(ticket_body)
-			setTimeout(function() {
-			}, 1000);
-						
-			if (call_getted) {	
-				var options = { method: 'POST',
-					url: process.env.DB_URI_2,
-					headers: {
-						'cache-control': 'no-cache',
-						'x-apikey': process.env.API_KEY,
-						'content-type': 'application/json' },
-					body: ticket_body,
-					json: true
-				};
-                
-				request(options, function (error, response, body) {
-					if (error) throw new Error(error);
-					const embed = new MessageEmbed()
-						.setTitle('Chamada feita Guardada')
-						.setColor(0x15c534)
-						.setDescription('A chamada feita foi corretamente guardada na base de dados');
-					message.channel.send(embed);
-				});
-			} else {
-				message.channel.send("Nao ha tickets com essas informaçoes")
-			}
         }
     }
 }
