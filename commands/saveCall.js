@@ -33,6 +33,14 @@ module.exports = class SaveCall extends Command {
 				}
 			});
 				
+			console.log(call_to_save)
+			let ticket_body = JSON.stringify({
+				ticket_number: call_to_save['ticket_number'],
+				sender: call_to_save['sender'],
+				phone_number: call_to_save['phone_number'],
+				content: call_to_save['content']
+			})
+			console.log(ticket_body)
 			setTimeout(function() {
 			}, 1000);
 						
@@ -43,12 +51,7 @@ module.exports = class SaveCall extends Command {
 						'cache-control': 'no-cache',
 						'x-apikey': process.env.API_KEY,
 						'content-type': 'application/json' },
-					body: {
-						ticket_number: call_to_save['ticket_number'],
-						sender: call_to_save['sender'],
-						phone_number: call_to_save['phone_number'],
-						content: call_to_save['content']
-						},
+					body: ticket_body,
 					json: true
 				};
                 
