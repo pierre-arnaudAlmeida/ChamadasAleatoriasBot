@@ -11,7 +11,7 @@ module.exports = class SaveCall extends Command {
     static action (message) {
         let args = message.content.split(' ')
         var call_to_save
-		var call_getted =false;
+		var call_getted = true
 		
 		args.shift()
 		
@@ -29,7 +29,7 @@ module.exports = class SaveCall extends Command {
 				var result = JSON.parse(body)
 				call_to_save = result
 				if (body.includes("error")) {
-					call_getted = true
+					call_getted = false
 				}
 			});
 				
