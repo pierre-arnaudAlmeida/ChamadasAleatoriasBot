@@ -27,7 +27,9 @@ module.exports = class SaveCall extends Command {
 			request(options, function (error, response, body) {
 				if (error) throw new Error(error)
 				var result = JSON.parse(body)
-				call_to_save = result
+				console.log(result)
+				call_to_save = result[0]
+				console.log(call_to_save)
 				if (body.includes("error")) {
 					call_getted = false
 				}
