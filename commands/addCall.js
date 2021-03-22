@@ -47,7 +47,9 @@ module.exports = class AddCall extends Command {
 
         request(options, function (error, response, body) {
             if (error) throw new Error(error);
-
+            console.log(response)
+            console.log("body :")
+            console.log(body)
             const embed = new MessageEmbed()
                 .setTitle('Chamada Guardada')
                 .setColor(0x15c534)
