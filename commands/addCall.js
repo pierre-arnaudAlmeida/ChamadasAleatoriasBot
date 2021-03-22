@@ -21,7 +21,7 @@ module.exports = class AddCall extends Command {
                 ticket = args[i+1]
             if (args[i].includes("sender"))
                 sender = args[i+1]
-            if (args[i].includes("sub"))
+            if (args[i].includes("is_sub"))
                 is_sub = args[i+1]
             if (args[i].includes("phone"))
                 phone = args[i+1]
@@ -29,7 +29,7 @@ module.exports = class AddCall extends Command {
                 content = args[i+1]
         }
         
-        console.log(is_sub)
+        console.log("is_sub : " + is_sub)
         
         var options = { method: 'POST',
             url: process.env.DB_URI,
