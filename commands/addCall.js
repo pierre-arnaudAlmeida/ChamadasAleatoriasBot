@@ -29,8 +29,6 @@ module.exports = class AddCall extends Command {
                 content = args[i+1]
         }
         
-        console.log("is_sub : " + is_sub)
-        
         var options = { method: 'POST',
             url: process.env.DB_URI,
             headers: {
@@ -49,6 +47,8 @@ module.exports = class AddCall extends Command {
 
         request(options, function (error, response, body) {
             if (error) throw new Error(error);
+            
+            console.log(response)
             
             const embed = new MessageEmbed()
                 .setTitle('Chamada Guardada')
