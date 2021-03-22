@@ -12,7 +12,7 @@ module.exports = class AddCall extends Command {
         let args = message.content.split('"')
         var ticket;
         var sender;
-        var sub;
+        var is_sub;
         var phone;
         var content;
 
@@ -22,12 +22,14 @@ module.exports = class AddCall extends Command {
             if (args[i].includes("sender"))
                 sender = args[i+1]
             if (args[i].includes("sub"))
-                sub = args[i+1]
+                is_sub = args[i+1]
             if (args[i].includes("phone"))
                 phone = args[i+1]
             if (args[i].includes("content"))
                 content = args[i+1]
         }
+        
+        console.log(is_sub)
         
         var options = { method: 'POST',
             url: process.env.DB_URI,
@@ -38,7 +40,7 @@ module.exports = class AddCall extends Command {
                 body: {
                     ticket_number: ticket,
                     sender: sender,
-                    is_sub: sub,
+                    is_sub: is_sub,
                     phone_number: phone,
                     content: content
                 },
@@ -47,7 +49,6 @@ module.exports = class AddCall extends Command {
 
         request(options, function (error, response, body) {
             if (error) throw new Error(error);
-            console.log(response)
             
             const embed = new MessageEmbed()
                 .setTitle('Chamada Guardada')
