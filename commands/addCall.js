@@ -22,7 +22,7 @@ module.exports = class AddCall extends Command {
             if (args[i].includes("sender"))
                 sender = args[i+1]
             if (args[i].includes("sub"))
-                sub = args[i+1].toUpperCase()
+                sub = args[i+1]
             if (args[i].includes("phone"))
                 phone = args[i+1]
             if (args[i].includes("content"))
