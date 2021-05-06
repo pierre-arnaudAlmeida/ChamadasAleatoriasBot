@@ -46,7 +46,7 @@ module.exports = class FindCall extends Command {
                         'Numero de ticket : ' + prank_call_list[i]['ticket_number'] + '\n' +
                         'Pessoa que mandou : ' + prank_call_list[i]['sender'] + '\n' +
                         'Subscritor : ' + prank_call_list[i]['is_sub'] + '\n' +
-                        'Numero de telefone : ' + prank_call_list[i]['phone_number'] + '\n' +
+                        'Numero de telefone : ||' + prank_call_list[i]['phone_number'] + '|| \n' +
                         'Mensagem : ' + prank_call_list[i]['content'] + '\n'
                     )
                 message.channel.send(embed)
