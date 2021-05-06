@@ -57,7 +57,7 @@ module.exports = class RandomCall extends Command {
                         'Numero de ticket : ' + prank_call_sub_list[prank]['ticket_number'] + '\n' +
                         'Pessoa que mandou : ' + prank_call_sub_list[prank]['sender'] + '\n' +
                         'Subscritor : ' + prank_call_sub_list[prank]['is_sub'] + '\n' +
-                        'Numero de telefone : ' + prank_call_sub_list[prank]['phone_number'] + '\n' +
+                        'Numero de telefone : ||' + prank_call_sub_list[prank]['phone_number'] + '|| \n' +
                         'Mensagem : ' + prank_call_sub_list[prank]['content'] + '\n'
                     )
                 message.channel.send(embed)
@@ -70,7 +70,7 @@ module.exports = class RandomCall extends Command {
                         'Numero de ticket : ' + prank_call_list[prank]['ticket_number'] + '\n' +
                         'Pessoa que mandou : ' + prank_call_list[prank]['sender'] + '\n' +
                         'Subscritor : ' + prank_call_list[prank]['is_sub'] + '\n' +
-                        'Numero de telefone : ' + prank_call_list[prank]['phone_number'] + '\n' +
+                        'Numero de telefone : ||' + prank_call_list[prank]['phone_number'] + '|| \n' +
                         'Mensagem : ' + prank_call_list[prank]['content'] + '\n'
                     )
                 message.channel.send(embed)
