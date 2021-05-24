@@ -35,7 +35,7 @@ module.exports = class FindCall extends Command {
             var result = JSON.parse(body)
 
             for (var i = 0; i < result.length; i++)
-                if (result[i]['sender'].toLowerCase().includes(args[0].toLowerCase()) || result[i]['ticket_number'] == args[0])
+                if (result[i]['sender'].toLowerCase().includes(args[0].toLowerCase()) || result[i]['ticket_number'] == args[0] || result[i]['phone_number'] == args[0])
                     prank_call_list.push(result[i])
                     
             for (var i = 0; i < prank_call_list.length; i++) {
